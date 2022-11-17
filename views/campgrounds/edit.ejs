@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate')%>
-  <h1>Edit Campground</h1>
+  <!-- <h1>Edit Campground</h1>
   <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
     <div>
       <label for="title">Title</label>
@@ -11,4 +11,41 @@
     </div>
     <button>Update Camground</button>
   </form>
-  <a href="/campgrounds/<%= campground._id%>">Back to Campground</a>
+  <a href="/campgrounds/<%= campground._id%>">Back to Campground</a> -->
+
+
+  <h1>Edit Campground</h1>
+  <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
+
+    <div class="mt-4 mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="campground[title]" value="<%=campground.title%>">
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" class="form-control" id="location" name="campground[location]" value="<%= campground.location %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Image URL</label>
+      <input type="text" class="form-control" id="image" name="campground[image]" value="<%=campground.image%>">
+    </div>
+
+      <div class="mb-3"> 
+        <label class="form-label" for="price" >Campground Price</label>
+        <div class="input-group"> 
+          <span class="input-group-text" id="price-label">$</span>
+          <input type="text" class="form-control" id="price" aria-label="price-label" name="campground[price]" value="<%= campground.price %>"
+            aria-describedby="price-label">
+        </div>
+      </div>
+ 
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea type="text" class="form-control" id="description" name="campground[description]"> <%= campground.description %> </textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3">Update Camground</button>
+  </form>
+  <a href="/campgrounds/<%=campground._id%>">Back to Campground</a>
