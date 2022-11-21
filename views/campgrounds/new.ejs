@@ -1,20 +1,23 @@
 <% layout('layouts/boilerplate')%>
   <h1>New Campground</h1>
-  <form action="/campgrounds" method="POST">
+  <form action="/campgrounds" method="POST" novalidate class="validated-form">
 
     <div class="mt-4 mb-3">
       <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title" name="campground[title]">
+      <input type="text" class="form-control" id="title" name="campground[title]" required>
+      <div class="valid-feedback">Looks good!</div>
     </div>
 
     <div class="mb-3">
       <label for="location" class="form-label">Location</label>
-      <input type="text" class="form-control" id="location" name="campground[location]">
+      <input type="text" class="form-control" id="location" name="campground[location]" required>
+      <div class="valid-feedback">Looks good!</div>
     </div>
 
     <div class="mb-3">
       <label for="image" class="form-label">Image URL</label>
-      <input type="text" class="form-control" id="image" name="campground[image]">
+      <input type="text" class="form-control" id="image" name="campground[image]" required>
+      <div class="valid-feedback">Looks good!</div>
     </div>
 
       <div class="mb-3"> 
@@ -22,15 +25,18 @@
         <div class="input-group"> 
           <span class="input-group-text" id="price-label">$</span>
           <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price-label" name="campground[price]"
-            aria-describedby="price-label">
+            aria-describedby="price-label" required>
+            <div class="valid-feedback">Looks good!</div>
         </div>
       </div>
 
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <textarea type="text" class="form-control" id="description" name="campground[description]"></textarea>
+      <textarea type="text" class="form-control" id="description" name="campground[description]" required></textarea>
+      <div class="valid-feedback">Looks good!</div>
     </div>
     <button type="submit" class="btn btn-primary mb-3">Add Campground</button>
   </form>
   <a href="/campgrounds">All Campgrounds</a>
+  
