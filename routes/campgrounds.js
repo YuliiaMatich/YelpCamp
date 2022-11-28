@@ -6,9 +6,9 @@ const Campground = require('../models/campground');
 const { campgroundSchema, reviewSchema } = require('../schemas.js');
 
 const validateCampground = (req, res, next) => {
- 
+
   const { error } = campgroundSchema.validate(req.body);
-  if (error){
+  if (error) {
     const msg = error.details.map(el => el.message).join(',')
     throw new ExpressError(msg, 400)
   } else {
@@ -26,9 +26,9 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/', validateCampground, catchAsync(async (req, res, next) => {
-  // if(!req.body.campground) throw new ExpressError('invalid Campground Data', 400)
-  const campground = new Campground (req.body.campground);
+  const campground = new Campground(req.body.campground);
   await campground.save();
+  req.flash('success', 'Successfully made a new campground');
   res.redirect(`/campgrounds/${campground._id}`)
 }));
 
