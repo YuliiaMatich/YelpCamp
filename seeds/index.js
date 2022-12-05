@@ -23,9 +23,10 @@ const seedDB = async () => {
   for (let i = 0; i < 50; i++ ){
     const random1000 = Math.floor((Math.random() * 1000));
     const camp = new Campground({
+      author: '638e14381887bfb07e157320',
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      image: 'https://source.unsplash.com/collection/483251',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In blanditiis autem ducimus voluptatibus adipisci vero necessitatibus! Reiciendis cupiditate sequi cumque a? Eos ut iure error, laudantium aliquam perferendis unde aliquid!',
       price: price()
     })
