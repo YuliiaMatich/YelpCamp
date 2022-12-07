@@ -11,10 +11,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const { campgroundSchema, reviewSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
-const Campground = require('./models/campground');
-const Review = require('./models/review');
 const User = require('./models/user');
 
 const userRoutes = require('./routes/users');
@@ -66,8 +63,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());  // passport configs
 
 app.use((req, res, next) => {
-  console.log('app sess',req.session)
-  if (!['/login', '/'].includes(req.originalUrl)) {
+  if (!['/login', '/', '/register'].includes(req.originalUrl)) {
    req.session.returnTo = req.originalUrl; 
   }
   res.locals.currentUser = req.user;
