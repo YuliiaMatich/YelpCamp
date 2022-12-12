@@ -5,21 +5,31 @@
     <a href="/campgrounds/new">Add Campground</a>
   </div>
 
-    <% for (let campground of campgrounds) {%>
-      <div class="card" style="width: 30rem;">
-        <% if(campground.images.length) { %>
-        <img src=" <%= campground.images[0].url %>" class="card-img-top" alt="">
-        <% } else {%>
-          <img src="https://res.cloudinary.com/dotqe9fdf/image/upload/v1670611518/YelpCamp/fazb4riheucfqftbxkxu.jpg" class="img-fluid" alt="">
-          <% }%>
-        <div class="card-body">
-          <h5 class="card-title"> <%= campground.title %></h5>
-          <p class="card-text"> <%= campground.description %></p>
-          <p class="card-text"><small class="text-muted"><%= campground.location %></small></p>
-          <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title %></a>
+  <% for (let campground of campgrounds){%>
+    <div class="card mb-3" >
+        <div class="row">
+            <div class="col-md-4">
+                <%if(campground.images.length) {%>
+                <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
+                <% }else {%>
+                <img class="img-fluid" alt=""
+                    src="https://res.cloudinary.com/douqbebwk/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png">
+                <% } %>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><%= campground.title %> </h5>
+                    <p class="card-text"><%= campground.description %></p>
+                    <p class="card-text">
+                        <small class="text-muted"><%= campground.location%></small>
+                    </p>
+                    <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View <%=campground.title%></a>
+                </div>
+            </div>
         </div>
-      </div>
-      <% } %>
+    </div>
+    <% }%>
+    </div>
 
       <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
